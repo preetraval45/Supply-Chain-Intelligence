@@ -1,0 +1,10 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Route path -->
+  <path d="M 12 32 Q 32 12, 52 32" stroke="#0ea5e9" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- Start point -->
+  <circle cx="12" cy="32" r="6" fill="#22c55e" stroke="#16a34a" stroke-width="2"/>
+  <!-- End point -->
+  <circle cx="52" cy="32" r="6" fill="#ef4444" stroke="#dc2626" stroke-width="2"/>
+  <!-- Arrow -->
+  <path d="M 48 26 L 52 32 L 48 38" stroke="#dc2626" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

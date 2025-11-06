@@ -1,0 +1,58 @@
+BUILT WITH - Technologies Used
+
+LANGUAGES:
+- TypeScript
+- Python 3.11
+- JavaScript
+- SQL
+
+FRONTEND FRAMEWORKS:
+- Next.js 14
+- React 18
+- Tailwind CSS
+
+BACKEND FRAMEWORKS:
+- FastAPI
+- Socket.IO
+- SQLAlchemy
+
+AI & MACHINE LEARNING:
+- Google Gemini 1.5 Pro
+- TensorFlow 2.15
+- OpenCV
+- Google Agent Development Kit (ADK)
+
+CLOUD SERVICES:
+- Google Cloud Run
+- Cloud SQL
+- Cloud Storage
+- Cloud Pub/Sub
+- NVIDIA L4 GPU
+
+DATABASES:
+- PostgreSQL 15
+- PostGIS
+
+MAPPING & VISUALIZATION:
+- Mapbox GL
+- Chart.js
+
+INFRASTRUCTURE:
+- Docker
+- Docker Compose
+
+APIS:
+- Google Generative AI API
+- Mapbox API
+
+ADDITIONAL TOOLS:
+- Uvicorn
+- asyncpg
+- python-socketio
+- node.js
+- npm
+
+DEVELOPMENT TOOLS:
+- Git
+- VS Code
+- Postman

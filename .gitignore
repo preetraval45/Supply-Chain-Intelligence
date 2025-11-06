@@ -1,0 +1,75 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Frontend
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/dist/
+
+# Backend
+backend/__pycache__/
+backend/*.pyc
+backend/.pytest_cache/
+
+# GPU Processor
+gpu-processor/__pycache__/
+gpu-processor/temp_images/
+gpu-processor/*.pyc
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Database
+*.db
+*.sqlite
+
+# Cloud
+.gcloud/
+.config/
+
+# Secrets
+credentials.json
+service-account.json
+*.pem
+*.key
+
+# Build
+dist/
+build/
+*.egg-info/
+
+# Docker
+docker-compose.override.yml
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Temporary files
+tmp/
+temp/
+*.tmp

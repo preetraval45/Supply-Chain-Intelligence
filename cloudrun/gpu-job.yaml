@@ -1,0 +1,42 @@
+apiVersion: run.googleapis.com/v1
+kind: Job
+metadata:
+  name: satellite-image-processor
+  labels:
+    app: supply-chain
+    component: gpu-processor
+spec:
+  template:
+    metadata:
+      annotations:
+        run.googleapis.com/execution-environment: gen2
+    spec:
+      template:
+        spec:
+          parallelism: 5  # Run 5 tasks in parallel
+          taskCount: 10   # Total 10 tasks
+          maxRetries: 2
+          containers:
+          - image: gcr.io/YOUR_PROJECT/satellite-image-processor:latest
+            env:
+            - name: GCS_BUCKET
+              value: "supply-chain-satellite-images"
+            - name: GCP_PROJECT_ID
+              value: "YOUR_PROJECT"
+            - name: CLOUD_RUN_JOB
+              value: "true"
+            - name: TF_FORCE_GPU_ALLOW_GROWTH
+              value: "true"
+            resources:
+              limits:
+                cpu: '4'
+                memory: 16Gi
+                nvidia.com/gpu: '1'  # 1x NVIDIA L4 GPU
+              requests:
+                cpu: '2'
+                memory: 8Gi
+                nvidia.com/gpu: '1'
+          nodeSelector:
+            cloud.google.com/gke-accelerator: nvidia-l4
+          # Use europe-west1 or europe-west4 for L4 GPU availability
+          location: europe-west1

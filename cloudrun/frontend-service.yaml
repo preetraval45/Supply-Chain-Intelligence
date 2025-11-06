@@ -1,0 +1,35 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: supply-chain-frontend
+  labels:
+    app: supply-chain
+    component: frontend
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: '1'
+        autoscaling.knative.dev/maxScale: '5'
+    spec:
+      containerConcurrency: 100
+      timeoutSeconds: 300
+      containers:
+      - image: gcr.io/YOUR_PROJECT/supply-chain-frontend:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NEXT_PUBLIC_API_URL
+          value: "https://supply-chain-backend-HASH-uc.a.run.app"
+        - name: NEXT_PUBLIC_MAPBOX_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: mapbox-token
+              key: token
+        resources:
+          limits:
+            cpu: '1'
+            memory: 1Gi
+          requests:
+            cpu: '0.5'
+            memory: 512Mi

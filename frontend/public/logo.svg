@@ -1,0 +1,18 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Supply Chain Icon - Interconnected nodes -->
+  <circle cx="60" cy="30" r="12" fill="#0ea5e9" stroke="#0284c7" stroke-width="2"/>
+  <circle cx="30" cy="70" r="12" fill="#0ea5e9" stroke="#0284c7" stroke-width="2"/>
+  <circle cx="90" cy="70" r="12" fill="#0ea5e9" stroke="#0284c7" stroke-width="2"/>
+  <circle cx="60" cy="90" r="12" fill="#22c55e" stroke="#16a34a" stroke-width="2"/>
+
+  <!-- Connecting lines -->
+  <line x1="60" y1="42" x2="30" y2="58" stroke="#0369a1" stroke-width="3"/>
+  <line x1="60" y1="42" x2="90" y2="58" stroke="#0369a1" stroke-width="3"/>
+  <line x1="30" y1="82" x2="60" y2="78" stroke="#0369a1" stroke-width="3"/>
+  <line x1="90" y1="82" x2="60" y2="78" stroke="#0369a1" stroke-width="3"/>
+  <line x1="30" y1="70" x2="90" y2="70" stroke="#0369a1" stroke-width="3" stroke-dasharray="5,5"/>
+
+  <!-- AI indicator -->
+  <circle cx="60" cy="60" r="8" fill="#f59e0b" stroke="#d97706" stroke-width="2"/>
+  <text x="60" y="65" font-family="Arial" font-size="10" font-weight="bold" fill="white" text-anchor="middle">AI</text>
+</svg>

@@ -1,0 +1,49 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: supply-chain-backend
+  labels:
+    app: supply-chain
+    component: backend
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: '1'
+        autoscaling.knative.dev/maxScale: '10'
+        run.googleapis.com/cloudsql-instances: YOUR_PROJECT:YOUR_REGION:supply-chain-db
+    spec:
+      containerConcurrency: 80
+      timeoutSeconds: 300
+      containers:
+      - image: gcr.io/YOUR_PROJECT/supply-chain-backend:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: POSTGRES_USER
+          value: "postgres"
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-password
+              key: password
+        - name: POSTGRES_HOST
+          value: "/cloudsql/YOUR_PROJECT:YOUR_REGION:supply-chain-db"
+        - name: POSTGRES_PORT
+          value: "5432"
+        - name: POSTGRES_DB
+          value: "supply_chain"
+        - name: GOOGLE_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: google-api-key
+              key: api_key
+        - name: GCP_PROJECT_ID
+          value: "YOUR_PROJECT"
+        resources:
+          limits:
+            cpu: '2'
+            memory: 2Gi
+          requests:
+            cpu: '1'
+            memory: 512Mi
