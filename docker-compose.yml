@@ -10,7 +10,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: supply_chain
     ports:
-      - "5432:5432"
+      - "3002:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -36,8 +36,8 @@ services:
       POSTGRES_DB: supply_chain
       GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
       GCP_PROJECT_ID: ${GCP_PROJECT_ID:-my-project}
-    ports:
-      - "8000:8000"
+    expose:
+      - "8000"
     depends_on:
       postgres:
         condition: service_healthy
@@ -52,11 +52,26 @@ services:
       dockerfile: Dockerfile
     container_name: supply-chain-frontend
     environment:
-      NEXT_PUBLIC_API_URL: http://localhost:8000
+      NEXT_PUBLIC_API_URL: http://localhost
       NEXT_PUBLIC_MAPBOX_TOKEN: ${MAPBOX_TOKEN:-}
-    ports:
-      - "3000:3000"
+    expose:
+      - "3000"
     depends_on:
+      - backend
+    networks:
+      - supply-chain-network
+    restart: unless-stopped
+
+  # Nginx Reverse Proxy
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: supply-chain-nginx
+    ports:
+      - "3000:80"
+    depends_on:
+      - frontend
       - backend
     networks:
       - supply-chain-network

@@ -1,7 +1,9 @@
 'use client'
 
+import { useState } from 'react'
 import { format } from 'date-fns'
 import { ExclamationTriangleIcon, CheckCircleIcon } from '@heroicons/react/24/solid'
+import { DisruptionDetail } from './DisruptionDetail'
 
 interface Disruption {
   id: string
@@ -19,6 +21,8 @@ interface AlertPanelProps {
 }
 
 export function AlertPanel({ disruptions }: AlertPanelProps) {
+  const [selectedDisruption, setSelectedDisruption] = useState<Disruption | null>(null)
+
   const getSeverityColor = (severity: string) => {
     const colors = {
       low: 'bg-green-100 text-green-800 border-green-200',
@@ -46,7 +50,11 @@ export function AlertPanel({ disruptions }: AlertPanelProps) {
           </div>
         ) : (
           disruptions.map((disruption) => (
-            <div key={disruption.id} className="p-4 hover:bg-gray-50 transition-colors">
+            <div
+              key={disruption.id}
+              className="p-4 hover:bg-gray-50 transition-colors cursor-pointer"
+              onClick={() => setSelectedDisruption(disruption)}
+            >
               <div className="flex items-start space-x-3">
                 <ExclamationTriangleIcon className="h-5 w-5 text-orange-500 mt-0.5 flex-shrink-0" />
                 <div className="flex-1 min-w-0">
@@ -90,6 +98,14 @@ export function AlertPanel({ disruptions }: AlertPanelProps) {
           ))
         )}
       </div>
+
+      {/* Disruption Detail Modal */}
+      {selectedDisruption && (
+        <DisruptionDetail
+          disruption={selectedDisruption}
+          onClose={() => setSelectedDisruption(null)}
+        />
+      )}
     </div>
   )
 }

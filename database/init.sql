@@ -2,7 +2,7 @@
 -- PostgreSQL initialization script
 
 -- Enable PostGIS for geographic data (if available)
-CREATE EXTENSION IF NOT EXISTS postgis;
+-- CREATE EXTENSION IF NOT EXISTS postgis;  -- Commented out - not needed for JSON-based locations
 
 -- Supply chain routes table
 CREATE TABLE IF NOT EXISTS routes (
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS sensor_readings (
     location JSON NOT NULL,  -- Store {lng, lat}
     temperature DECIMAL(5,2),
     delay_minutes INT,
-    metadata JSON,  -- Additional sensor data
+    sensor_metadata JSON,  -- Additional sensor data
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 

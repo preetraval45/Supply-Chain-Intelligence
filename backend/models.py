@@ -43,4 +43,4 @@ class SensorReading(Base):
     location = Column(JSON, nullable=False)  # Store [lng, lat] as JSON
     temperature = Column(Float)
     delay_minutes = Column(Integer)
-    metadata = Column(JSON)  # Additional sensor data
+    sensor_metadata = Column(JSON)  # Additional sensor data (renamed from 'metadata' to avoid SQLAlchemy conflict)
