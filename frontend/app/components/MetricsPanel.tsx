@@ -69,24 +69,24 @@ export function MetricsPanel() {
   }, [])
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
-      <div className="p-4 border-b border-gray-200">
-        <h2 className="text-lg font-semibold text-gray-900">Performance Metrics</h2>
-        <p className="text-sm text-gray-500 mt-1">Last 6 hours</p>
+    <div className="bg-gray-800 rounded-lg shadow-md overflow-hidden border border-gray-700">
+      <div className="p-4 border-b border-gray-700">
+        <h2 className="text-lg font-semibold text-white">Performance Metrics</h2>
+        <p className="text-sm text-gray-400 mt-1">Last 6 hours</p>
       </div>
       <div className="p-4">
         <div className="grid grid-cols-3 gap-4 mb-6">
-          <div className="text-center p-4 bg-blue-50 rounded-lg">
-            <div className="text-2xl font-bold text-blue-600">98.7%</div>
-            <div className="text-xs text-gray-600 mt-1">Prediction Accuracy</div>
+          <div className="text-center p-4 bg-blue-900/30 rounded-lg border border-blue-700">
+            <div className="text-2xl font-bold text-blue-400">98.7%</div>
+            <div className="text-xs text-gray-300 mt-1">Prediction Accuracy</div>
           </div>
-          <div className="text-center p-4 bg-green-50 rounded-lg">
-            <div className="text-2xl font-bold text-green-600">48h</div>
-            <div className="text-xs text-gray-600 mt-1">Avg. Warning Time</div>
+          <div className="text-center p-4 bg-green-900/30 rounded-lg border border-green-700">
+            <div className="text-2xl font-bold text-green-400">48h</div>
+            <div className="text-xs text-gray-300 mt-1">Avg. Warning Time</div>
           </div>
-          <div className="text-center p-4 bg-purple-50 rounded-lg">
-            <div className="text-2xl font-bold text-purple-600">$2.4M</div>
-            <div className="text-xs text-gray-600 mt-1">Cost Saved Today</div>
+          <div className="text-center p-4 bg-purple-900/30 rounded-lg border border-purple-700">
+            <div className="text-2xl font-bold text-purple-400">$2.4M</div>
+            <div className="text-xs text-gray-300 mt-1">Cost Saved Today</div>
           </div>
         </div>
         <div className="h-64">

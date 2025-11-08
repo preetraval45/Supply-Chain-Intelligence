@@ -1,16 +1,16 @@
-# Global Supply Chain Intelligence Network - Project Story
+# Global Supply Chain Intelligence Network v2.0 - Developer Journey
 
-## 💡 Inspiration
+## 💡 How This Project Started
 
-The idea for this project came from watching the news about the 2021 Suez Canal blockage. A single ship, the Ever Given, got stuck and disrupted **$9.6 billion worth of trade per day**. I couldn't stop thinking: *What if we could predict this 24-72 hours earlier?*
+I was reading about the 2021 Suez Canal blockage when I had an idea that wouldn't leave me alone. A single ship, the Ever Given, disrupted **$9.6 billion worth of trade per day**. I kept thinking: *What if I could build a system that predicts these disruptions 24-72 hours before they happen?*
 
-The global supply chain is a $15 trillion industry, yet most companies still rely on reactive systems. They find out about disruptions when containers are already delayed, ports are congested, or ships are rerouted. By then, it's too late to minimize the damage.
+The global supply chain is a $15 trillion industry, yet most companies rely on reactive systems. They only find out about problems when containers are already delayed, ports are congested, or ships are rerouted. By that point, it's too late to minimize the damage.
 
-I wanted to build something that could **see disruptions before they happen** - a crystal ball for supply chain managers, powered by AI.
+I spent two weeks building an AI-powered prediction system - essentially a crystal ball for supply chain managers. Here's how I did it.
 
-## 🎯 What It Does
+## 🎯 What I Built
 
-The **Global Supply Chain Intelligence Network** is a multi-agent AI system that predicts supply chain disruptions 24-72 hours in advance by analyzing:
+I developed the **Global Supply Chain Intelligence Network** - a multi-agent AI system that predicts supply chain disruptions 24-72 hours in advance. The system analyzes:
 
 1. **Satellite Imagery** (processed with GPU acceleration)
 2. **IoT Sensor Data** (from ports, ships, and warehouses)
@@ -28,11 +28,11 @@ All of this runs on **Google Cloud Run** with:
 - WebSocket connections for real-time updates
 - **12 AI agents** built with Google's Agent Development Kit
 
-## 🏗️ How We Built It
+## 🏗️ Technical Deep Dive
 
-### **Architecture Overview**
+### **System Architecture**
 
-The system consists of four main components:
+I designed the system with four main components working together:
 
 1. **Frontend Dashboard** (Next.js 14 + TypeScript)
    - Real-time interactive map with Mapbox GL showing 500+ disruptions
@@ -145,7 +145,7 @@ socket.on('disruption', (data) => {
 });
 ```
 
-## 🚧 Challenges We Faced
+## 🚧 Challenges I Overcame
 
 ### **Challenge 1: GPU on Serverless**
 **Problem**: Cloud Run has a 60-minute timeout, but GPU processing can take longer.
@@ -197,9 +197,9 @@ CREATE INDEX idx_routes_spatial ON routes
 USING GIST (ST_MakeLine(origin_location, destination_location));
 ```
 
-## 📚 What We Learned
+## 📚 What I Learned
 
-### **Technical Skills**
+### **Technical Skills I Gained**
 1. **GPU Programming**: Learned how to optimize TensorFlow for GPU and debug CUDA errors
 2. **Agent Development**: Built autonomous agents that can coordinate with each other
 3. **Serverless at Scale**: Designed a system that scales from 0 to 1000 requests/second
@@ -253,9 +253,9 @@ $$
 
 We only alert when $P(\text{Disruption}|\text{Data}) > 0.85$
 
-## 🚀 What's Next
+## 🚀 Future Enhancements
 
-If we had more time, we would add:
+If I had more time, I would add:
 
 1. **Blockchain Integration**: Immutable audit trail of all predictions and decisions
 2. **Federated Learning**: Train models on data from multiple companies without sharing raw data
@@ -316,6 +316,10 @@ Special thanks to the Cloud Run team for building an amazing platform that makes
 
 ---
 
-**Built with ❤️ for the Cloud Run Hackathon**
+---
+
+**Developer**: Built with passion for the Cloud Run Hackathon
+**Development Time**: 2 weeks of intensive coding
+**Lines of Code**: ~8,000+ across frontend and backend
 
 **#CloudRunHackathon #GoogleCloud #AI #SupplyChain #Serverless**

@@ -135,15 +135,15 @@ export function RealTimeInsights({ disruptions }: { disruptions: any[] }) {
   }, [])
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6">
+    <div className="bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-700">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">Real-Time Market Intelligence</h2>
-          <p className="text-sm text-gray-500 mt-1">
+          <h2 className="text-2xl font-bold text-white">Real-Time Market Intelligence</h2>
+          <p className="text-sm text-gray-400 mt-1">
             Live updates every 5 seconds • Global supply chain metrics
           </p>
         </div>
-        <div className="flex items-center space-x-2 bg-green-100 text-green-700 px-3 py-1.5 rounded-lg">
+        <div className="flex items-center space-x-2 bg-green-900/30 text-green-400 px-3 py-1.5 rounded-lg border border-green-600">
           <div className="h-2 w-2 bg-green-500 rounded-full animate-pulse" />
           <span className="text-xs font-semibold">LIVE</span>
         </div>
@@ -154,15 +154,15 @@ export function RealTimeInsights({ disruptions }: { disruptions: any[] }) {
         {metrics.map((metric, index) => (
           <div
             key={index}
-            className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-lg p-4 border border-gray-200 hover:shadow-md transition-shadow"
+            className="bg-gradient-to-br from-gray-700 to-gray-900 rounded-lg p-4 border border-gray-600 hover:shadow-md transition-shadow"
           >
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <div className="flex items-center space-x-2 mb-2">
                   <span className="text-2xl">{metric.icon}</span>
-                  <p className="text-xs text-gray-600 font-medium">{metric.label}</p>
+                  <p className="text-xs text-gray-300 font-medium">{metric.label}</p>
                 </div>
-                <p className="text-2xl font-bold text-gray-900 mb-1">{metric.value}</p>
+                <p className="text-2xl font-bold text-white mb-1">{metric.value}</p>
                 <div className="flex items-center space-x-1">
                   <span
                     className={`text-xs font-semibold ${
@@ -175,7 +175,7 @@ export function RealTimeInsights({ disruptions }: { disruptions: any[] }) {
                   >
                     {metric.trend === 'up' ? '↑' : metric.trend === 'down' ? '↓' : '→'} {metric.change}
                   </span>
-                  <span className="text-xs text-gray-500">vs yesterday</span>
+                  <span className="text-xs text-gray-400">vs yesterday</span>
                 </div>
               </div>
             </div>
@@ -184,34 +184,34 @@ export function RealTimeInsights({ disruptions }: { disruptions: any[] }) {
       </div>
 
       {/* Predictive Alerts Section */}
-      <div className="mt-6 bg-gradient-to-r from-orange-50 to-red-50 border border-orange-200 rounded-lg p-4">
-        <h3 className="text-sm font-bold text-gray-900 mb-3 flex items-center">
+      <div className="mt-6 bg-gradient-to-r from-orange-900/30 to-red-900/30 border border-orange-700 rounded-lg p-4">
+        <h3 className="text-sm font-bold text-white mb-3 flex items-center">
           <span className="text-lg mr-2">⚡</span>
           Predictive Alerts - Next 24-72 Hours
         </h3>
         <div className="space-y-2">
-          <div className="flex items-start space-x-3 bg-white rounded-lg p-3">
+          <div className="flex items-start space-x-3 bg-gray-900/50 rounded-lg p-3 border border-gray-700">
             <span className="text-xl">🌀</span>
             <div className="flex-1">
-              <p className="text-sm font-semibold text-gray-900">High Probability: Port Congestion</p>
-              <p className="text-xs text-gray-600">Port of Shanghai - Expected in 36 hours • Confidence: 87%</p>
-              <p className="text-xs text-blue-600 mt-1">Recommended: Reroute via Ningbo-Zhoushan (+8hrs, saves $15K)</p>
+              <p className="text-sm font-semibold text-white">High Probability: Port Congestion</p>
+              <p className="text-xs text-gray-300">Port of Shanghai - Expected in 36 hours • Confidence: 87%</p>
+              <p className="text-xs text-blue-400 mt-1">Recommended: Reroute via Ningbo-Zhoushan (+8hrs, saves $15K)</p>
             </div>
           </div>
-          <div className="flex items-start space-x-3 bg-white rounded-lg p-3">
+          <div className="flex items-start space-x-3 bg-gray-900/50 rounded-lg p-3 border border-gray-700">
             <span className="text-xl">🌊</span>
             <div className="flex-1">
-              <p className="text-sm font-semibold text-gray-900">Weather Impact: Tropical Storm Delta</p>
-              <p className="text-xs text-gray-600">Caribbean routes - ETA 48 hours • Affects 124 shipments</p>
-              <p className="text-xs text-blue-600 mt-1">Recommended: Delay departure by 72hrs or use Panama alternate route</p>
+              <p className="text-sm font-semibold text-white">Weather Impact: Tropical Storm Delta</p>
+              <p className="text-xs text-gray-300">Caribbean routes - ETA 48 hours • Affects 124 shipments</p>
+              <p className="text-xs text-blue-400 mt-1">Recommended: Delay departure by 72hrs or use Panama alternate route</p>
             </div>
           </div>
-          <div className="flex items-start space-x-3 bg-white rounded-lg p-3">
+          <div className="flex items-start space-x-3 bg-gray-900/50 rounded-lg p-3 border border-gray-700">
             <span className="text-xl">📈</span>
             <div className="flex-1">
-              <p className="text-sm font-semibold text-gray-900">Cost Opportunity: Fuel Price Drop</p>
-              <p className="text-xs text-gray-600">Singapore bunker fuel - Expected 5% decrease in 24hrs</p>
-              <p className="text-xs text-blue-600 mt-1">Recommended: Delay refueling, potential savings: $28K per vessel</p>
+              <p className="text-sm font-semibold text-white">Cost Opportunity: Fuel Price Drop</p>
+              <p className="text-xs text-gray-300">Singapore bunker fuel - Expected 5% decrease in 24hrs</p>
+              <p className="text-xs text-blue-400 mt-1">Recommended: Delay refueling, potential savings: $28K per vessel</p>
             </div>
           </div>
         </div>
