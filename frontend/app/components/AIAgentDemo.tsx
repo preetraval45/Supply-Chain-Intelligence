@@ -146,11 +146,11 @@ export function AIAgentDemo() {
   ]
 
   return (
-    <div id="agents" className="bg-white rounded-lg shadow-lg p-6">
+    <div id="agents" className="bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-700">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">AI Agents in Action</h2>
-          <p className="text-sm text-gray-500 mt-1">
+          <h2 className="text-2xl font-bold text-white">AI Agents in Action</h2>
+          <p className="text-sm text-gray-400 mt-1">
             12 autonomous agents powered by Google Gemini & ADK
           </p>
         </div>
@@ -166,24 +166,24 @@ export function AIAgentDemo() {
           <div
             key={agent.name}
             onClick={() => setSelectedAgent(selectedAgent === agent.name ? null : agent.name)}
-            className={`cursor-pointer p-4 rounded-lg border-2 transition-all ${
+            className={`cursor-pointer p-4 rounded-lg border-2 transition-all bg-gray-700/50 ${
               selectedAgent === agent.name
-                ? `border-${agent.color}-500 bg-${agent.color}-50`
-                : 'border-gray-200 hover:border-gray-300'
+                ? `border-${agent.color}-500`
+                : 'border-gray-600 hover:border-gray-500'
             }`}
           >
             <div className="flex items-center space-x-3 mb-3">
               <div className="text-3xl">{agent.icon}</div>
               <div className="flex-1">
-                <h3 className="font-semibold text-gray-900">{agent.name}</h3>
-                <p className="text-xs text-gray-500">{agent.description}</p>
+                <h3 className="font-semibold text-white">{agent.name}</h3>
+                <p className="text-xs text-gray-400">{agent.description}</p>
               </div>
             </div>
             <div className="grid grid-cols-3 gap-2 mt-3">
               {Object.entries(agent.metrics).map(([key, value]) => (
                 <div key={key} className="text-center">
-                  <div className={`text-lg font-bold text-${agent.color}-600`}>{value}</div>
-                  <div className="text-xs text-gray-500 capitalize">{key}</div>
+                  <div className={`text-lg font-bold text-${agent.color}-400`}>{value}</div>
+                  <div className="text-xs text-gray-400 capitalize">{key}</div>
                 </div>
               ))}
             </div>
@@ -192,8 +192,8 @@ export function AIAgentDemo() {
       </div>
 
       {/* Live Activity Feed */}
-      <div className="bg-gray-50 rounded-lg p-4">
-        <h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center">
+      <div className="bg-gray-700/30 rounded-lg p-4 border border-gray-600">
+        <h3 className="text-sm font-semibold text-white mb-3 flex items-center">
           <svg className="h-4 w-4 mr-2 text-green-500 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />
           </svg>
@@ -203,28 +203,28 @@ export function AIAgentDemo() {
           {activities.map((activity, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg p-3 border border-gray-200 hover:shadow-md transition-shadow"
+              className="bg-gray-800/60 rounded-lg p-3 border border-gray-600 hover:border-gray-500 transition-all"
             >
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center space-x-2">
-                    <span className="text-sm font-semibold text-gray-900">
+                    <span className="text-sm font-semibold text-white">
                       {activity.agent}
                     </span>
                     <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${
                       activity.status === 'completed'
-                        ? 'bg-green-100 text-green-800'
+                        ? 'bg-green-900/50 text-green-400 border border-green-600'
                         : activity.status === 'processing'
-                        ? 'bg-blue-100 text-blue-800'
-                        : 'bg-yellow-100 text-yellow-800'
+                        ? 'bg-blue-900/50 text-blue-400 border border-blue-600'
+                        : 'bg-yellow-900/50 text-yellow-400 border border-yellow-600'
                     }`}>
                       {activity.status}
                     </span>
                   </div>
-                  <p className="text-sm text-gray-700 mt-1">{activity.action}</p>
-                  <p className="text-xs text-gray-500 mt-1">{activity.details}</p>
+                  <p className="text-sm text-gray-300 mt-1">{activity.action}</p>
+                  <p className="text-xs text-gray-400 mt-1">{activity.details}</p>
                 </div>
-                <span className="text-xs text-gray-400">{activity.timestamp}</span>
+                <span className="text-xs text-gray-500">{activity.timestamp}</span>
               </div>
             </div>
           ))}
@@ -232,19 +232,19 @@ export function AIAgentDemo() {
       </div>
 
       {/* Explanation */}
-      <div className="mt-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-4 border border-blue-200">
-        <h4 className="text-sm font-semibold text-gray-900 mb-2">How It Works</h4>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-gray-700">
+      <div className="mt-6 bg-gradient-to-r from-blue-900/40 to-indigo-900/40 rounded-lg p-4 border border-blue-700">
+        <h4 className="text-sm font-semibold text-white mb-2">How It Works</h4>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-gray-300">
           <div>
-            <strong className="text-blue-600">Core Prediction Agents:</strong> The Prediction Agent analyzes satellite imagery using NVIDIA L4 GPU,
+            <strong className="text-blue-400">Core Prediction Agents:</strong> The Prediction Agent analyzes satellite imagery using NVIDIA L4 GPU,
             processes IoT sensor data, and uses Google Gemini for multimodal intelligence. Weather Analysis Agent tracks storms and climate patterns.
           </div>
           <div>
-            <strong className="text-green-600">Optimization & Planning:</strong> Route Planning and Optimization Agents calculate alternative shipping routes,
+            <strong className="text-green-400">Optimization & Planning:</strong> Route Planning and Optimization Agents calculate alternative shipping routes,
             while the Inventory Manager and Cost Optimizer balance stock levels and minimize expenses across the network.
           </div>
           <div>
-            <strong className="text-purple-600">Coordination & Monitoring:</strong> The Supply Chain Coordinator orchestrates all 12 agents,
+            <strong className="text-purple-400">Coordination & Monitoring:</strong> The Supply Chain Coordinator orchestrates all 12 agents,
             while specialized agents monitor ports, vessels, customs, and risks. Alert Agent ensures stakeholders receive timely notifications.
           </div>
         </div>

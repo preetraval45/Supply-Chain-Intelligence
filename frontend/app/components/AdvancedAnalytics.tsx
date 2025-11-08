@@ -148,9 +148,9 @@ const ChartContainer = ({
   className?: string
 }) => {
   return (
-    <div className={`bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700 ${className}`}>
+    <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
       <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">{title}</h3>
-      <div className="relative">
+      <div className={`relative ${className}`}>
         {children}
       </div>
     </div>
@@ -181,7 +181,7 @@ export function AdvancedAnalytics() {
 
   const chartOptions = {
     responsive: true,
-    maintainAspectRatio: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         labels: {
@@ -420,24 +420,24 @@ export function AdvancedAnalytics() {
   }
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-950 min-h-screen p-6 space-y-8">
-      {/* Header */}
-      <div className="flex justify-between items-center">
-        <div>
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white">Advanced Analytics</h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">Comprehensive supply chain intelligence and insights</p>
+    <div className="space-y-4">
+      {/* Compact Header with Time Range */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-gray-800/50 rounded-lg p-4 border border-gray-700">
+        <div className="flex items-center gap-3">
+          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+          <span className="text-sm text-gray-300">Real-time analytics</span>
         </div>
 
         {/* Time Range Selector */}
-        <div className="flex gap-2 bg-white dark:bg-gray-800 rounded-xl p-2 shadow-lg">
+        <div className="flex gap-2 bg-gray-800 rounded-lg p-1.5 shadow-lg border border-gray-700">
           {(['24h', '7d', '30d', '90d'] as const).map((range) => (
             <button
               key={range}
               onClick={() => setTimeRange(range)}
-              className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 ${
+              className={`px-3 py-1.5 rounded-md text-sm font-semibold transition-all ${
                 timeRange === range
-                  ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
-                  : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                  ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white'
+                  : 'text-gray-400 hover:bg-gray-700 hover:text-white'
               }`}
             >
               {range}
@@ -446,8 +446,8 @@ export function AdvancedAnalytics() {
         </div>
       </div>
 
-      {/* Key Metrics Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      {/* Key Metrics Cards - Compact */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         <MetricCard
           label="Total Disruptions"
           value={data.keyMetrics.totalDisruptions}
@@ -477,72 +477,39 @@ export function AdvancedAnalytics() {
         />
       </div>
 
-      {/* Charts Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {/* Charts Grid - Compact */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Pie Chart - Disruption Types */}
-        <ChartContainer title="Disruption Types Distribution" className="h-[400px]">
+        <ChartContainer title="Disruption Types" className="h-[300px]">
           <Pie data={pieChartData} options={chartOptions} />
         </ChartContainer>
 
         {/* Doughnut Chart - Severity Distribution */}
-        <ChartContainer title="Severity Level Distribution" className="h-[400px]">
+        <ChartContainer title="Severity Levels" className="h-[300px]">
           <Doughnut data={doughnutChartData} options={chartOptions} />
         </ChartContainer>
 
         {/* Line Chart - Weekly Trends */}
-        <ChartContainer title={`${timeRange === '24h' ? 'Hourly' : 'Daily'} Disruption Trends`} className="lg:col-span-2 h-[350px]">
+        <ChartContainer title={`${timeRange === '24h' ? 'Hourly' : 'Daily'} Trends`} className="lg:col-span-2 h-[280px]">
           <Line data={lineChartData} options={lineChartOptions} />
         </ChartContainer>
 
         {/* Bar Chart - Regional Impact */}
-        <ChartContainer title="Regional Impact Assessment" className="h-[350px]">
+        <ChartContainer title="Regional Impact" className="h-[280px]">
           <Bar data={regionalBarData} options={barChartOptions} />
         </ChartContainer>
 
         {/* Bar Chart - Cost Impact */}
-        <ChartContainer title="Cost Impact by Category" className="h-[350px]">
+        <ChartContainer title="Cost Impact" className="h-[280px]">
           <Bar data={costBarData} options={costBarChartOptions} />
         </ChartContainer>
 
         {/* Line Chart - Prediction Accuracy Trend */}
-        <ChartContainer title="AI Prediction Accuracy Trend" className="lg:col-span-2 h-[350px]">
+        <ChartContainer title="AI Prediction Accuracy" className="lg:col-span-2 h-[280px]">
           <Line data={predictionAccuracyData} options={predictionChartOptions} />
         </ChartContainer>
       </div>
 
-      {/* Analytics Insights Footer */}
-      <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl p-8 shadow-xl">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <h3 className="text-lg font-bold mb-3">Key Insight</h3>
-            <p className="text-blue-100">
-              {timeRange === '24h'
-                ? 'Port congestion is the leading disruption type this hour, accounting for 30% of all incidents.'
-                : `Over the last ${timeRange === '7d' ? 'week' : timeRange === '30d' ? 'month' : 'quarter'}, weather events and operational issues dominate disruptions.`}
-            </p>
-          </div>
-          <div>
-            <h3 className="text-lg font-bold mb-3">Recommendation</h3>
-            <p className="text-blue-100">
-              Increase resources in {Object.entries(data.regionalImpact).sort((a, b) => b[1] - a[1])[0][0]} region.
-              Deploy preventive measures for weather-related disruptions.
-            </p>
-          </div>
-          <div>
-            <h3 className="text-lg font-bold mb-3">Forecast</h3>
-            <p className="text-blue-100">
-              Based on current trends, expect {Math.ceil(data.keyMetrics.totalDisruptions * 1.15)} disruptions in the next period.
-              AI confidence: 97.2%
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Real-time Data Badge */}
-      <div className="flex justify-center items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
-        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-        <span>Analytics updated in real-time</span>
-      </div>
     </div>
   )
 }
